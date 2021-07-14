@@ -45,21 +45,6 @@ public class SNBEvaluationModule extends AbstractEvaluationModule {
 	private Property EVALUATION_Q12E_AVERAGE_TIME = null;
 	private Property EVALUATION_Q13E_AVERAGE_TIME = null;
 	private Property EVALUATION_Q14E_AVERAGE_TIME = null;
-	private Property EVALUATION_S1E_AVERAGE_TIME = null;
-	private Property EVALUATION_S2E_AVERAGE_TIME = null;
-	private Property EVALUATION_S3E_AVERAGE_TIME = null;
-	private Property EVALUATION_S4E_AVERAGE_TIME = null;
-	private Property EVALUATION_S5E_AVERAGE_TIME = null;
-	private Property EVALUATION_S6E_AVERAGE_TIME = null;
-	private Property EVALUATION_S7E_AVERAGE_TIME = null;
-	private Property EVALUATION_U1E_AVERAGE_TIME = null;
-	private Property EVALUATION_U2E_AVERAGE_TIME = null;
-	private Property EVALUATION_U3E_AVERAGE_TIME = null;
-	private Property EVALUATION_U4E_AVERAGE_TIME = null;
-	private Property EVALUATION_U5E_AVERAGE_TIME = null;
-	private Property EVALUATION_U6E_AVERAGE_TIME = null;
-	private Property EVALUATION_U7E_AVERAGE_TIME = null;
-	private Property EVALUATION_U8E_AVERAGE_TIME = null;
 	
 	/* Property for loading time" */
 	private Property EVALUATION_LOADING_TIME = null;
@@ -107,22 +92,6 @@ public class SNBEvaluationModule extends AbstractEvaluationModule {
 		totalTimePerQueryType.put("Q12", (long) 0);
 		totalTimePerQueryType.put("Q13", (long) 0);
 		totalTimePerQueryType.put("Q14", (long) 0);
-		totalTimePerQueryType.put("S1", (long) 0);
-		totalTimePerQueryType.put("S2", (long) 0);
-		totalTimePerQueryType.put("S3", (long) 0);
-		totalTimePerQueryType.put("S4", (long) 0);
-		totalTimePerQueryType.put("S5", (long) 0);
-		totalTimePerQueryType.put("S6", (long) 0);
-		totalTimePerQueryType.put("S7", (long) 0);
-		totalTimePerQueryType.put("U1", (long) 0);
-		totalTimePerQueryType.put("U2", (long) 0);
-		totalTimePerQueryType.put("U3", (long) 0);
-		totalTimePerQueryType.put("U4", (long) 0);
-		totalTimePerQueryType.put("U5", (long) 0);
-		totalTimePerQueryType.put("U6", (long) 0);
-		totalTimePerQueryType.put("U7", (long) 0);
-		totalTimePerQueryType.put("U8", (long) 0);
-		
 		
 		numberOfQueriesPerQueryType.put("Q1", 0);
 		numberOfQueriesPerQueryType.put("Q2", 0);
@@ -138,21 +107,6 @@ public class SNBEvaluationModule extends AbstractEvaluationModule {
 		numberOfQueriesPerQueryType.put("Q12", 0);
 		numberOfQueriesPerQueryType.put("Q13", 0);
 		numberOfQueriesPerQueryType.put("Q14", 0);
-		numberOfQueriesPerQueryType.put("S1", 0);
-		numberOfQueriesPerQueryType.put("S2", 0);
-		numberOfQueriesPerQueryType.put("S3", 0);
-		numberOfQueriesPerQueryType.put("S4", 0);
-		numberOfQueriesPerQueryType.put("S5", 0);
-		numberOfQueriesPerQueryType.put("S6", 0);
-		numberOfQueriesPerQueryType.put("S7", 0);
-		numberOfQueriesPerQueryType.put("U1", 0);
-		numberOfQueriesPerQueryType.put("U2", 0);
-		numberOfQueriesPerQueryType.put("U3", 0);
-		numberOfQueriesPerQueryType.put("U4", 0);
-		numberOfQueriesPerQueryType.put("U5", 0);
-		numberOfQueriesPerQueryType.put("U6", 0);
-		numberOfQueriesPerQueryType.put("U7", 0);
-		numberOfQueriesPerQueryType.put("U8", 0);
 		
 		Map<String, String> env = System.getenv();
 		
@@ -164,8 +118,8 @@ public class SNBEvaluationModule extends AbstractEvaluationModule {
         
         
         /* average query times per type */
-        if (!env.containsKey(SNBConstants.EVALUATION_Q01E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q01E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(SNBConstants.EVALUATION_Q19_1_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q19_1_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
         if (!env.containsKey(SNBConstants.EVALUATION_Q02E_AVERAGE_TIME)) {
             throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q02E_AVERAGE_TIME + "\" from the environment. Aborting.");
@@ -220,67 +174,6 @@ public class SNBEvaluationModule extends AbstractEvaluationModule {
         EVALUATION_Q12E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q12E_AVERAGE_TIME));
         EVALUATION_Q13E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q13E_AVERAGE_TIME));
         EVALUATION_Q14E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q14E_AVERAGE_TIME));
-        if (!env.containsKey(SNBConstants.EVALUATION_S1E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_S1E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_S2E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_S2E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_S3E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_S3E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_S4E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_S4E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_S5E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_S5E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_S6E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_S6E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_S7E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_S7E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        EVALUATION_S1E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_S1E_AVERAGE_TIME));
-        EVALUATION_S2E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_S2E_AVERAGE_TIME));
-        EVALUATION_S3E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_S3E_AVERAGE_TIME));
-        EVALUATION_S4E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_S4E_AVERAGE_TIME));
-        EVALUATION_S5E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_S5E_AVERAGE_TIME));
-        EVALUATION_S6E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_S6E_AVERAGE_TIME));
-        EVALUATION_S7E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_S7E_AVERAGE_TIME));
-        
-        if (!env.containsKey(SNBConstants.EVALUATION_U1E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_U1E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_U2E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_U2E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_U3E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_U3E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_U4E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_U4E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_U5E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_U5E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_U6E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_U6E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_U7E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_U7E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        if (!env.containsKey(SNBConstants.EVALUATION_U8E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_U8E_AVERAGE_TIME + "\" from the environment. Aborting.");
-        }
-        EVALUATION_U1E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_U1E_AVERAGE_TIME));
-        EVALUATION_U2E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_U2E_AVERAGE_TIME));
-        EVALUATION_U3E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_U3E_AVERAGE_TIME));
-        EVALUATION_U4E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_U4E_AVERAGE_TIME));
-        EVALUATION_U5E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_U5E_AVERAGE_TIME));
-        EVALUATION_U6E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_U6E_AVERAGE_TIME));
-        EVALUATION_U7E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_U7E_AVERAGE_TIME));
-        EVALUATION_U8E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_U8E_AVERAGE_TIME));
         
         /* loading time */
         if (!env.containsKey(SNBConstants.EVALUATION_LOADING_TIME)) {
@@ -429,66 +322,6 @@ public class SNBEvaluationModule extends AbstractEvaluationModule {
 				(double)totalTimePerQueryType.get("Q14")/numberOfQueriesPerQueryType.get("Q14"), XSDDatatype.XSDdouble);
 		if (numberOfQueriesPerQueryType.get("Q14") > 0)
 			finalModel.add(experiment, EVALUATION_Q14E_AVERAGE_TIME, q14eAverageTimeLiteral);
-		Literal s1eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("S1")/numberOfQueriesPerQueryType.get("S1"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("S1") > 0)
-			finalModel.add(experiment, EVALUATION_S1E_AVERAGE_TIME, s1eAverageTimeLiteral);
-		Literal s2eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("S2")/numberOfQueriesPerQueryType.get("S2"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("S2") > 0)
-			finalModel.add(experiment, EVALUATION_S2E_AVERAGE_TIME, s2eAverageTimeLiteral);
-		Literal s3eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("S3")/numberOfQueriesPerQueryType.get("S3"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("S3") > 0)
-			finalModel.add(experiment, EVALUATION_S3E_AVERAGE_TIME, s3eAverageTimeLiteral);
-		Literal s4eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("S4")/numberOfQueriesPerQueryType.get("S4"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("S4") > 0)
-			finalModel.add(experiment, EVALUATION_S4E_AVERAGE_TIME, s4eAverageTimeLiteral);
-		Literal s5eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("S5")/numberOfQueriesPerQueryType.get("S5"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("S5") > 0)
-			finalModel.add(experiment, EVALUATION_S5E_AVERAGE_TIME, s5eAverageTimeLiteral);
-		Literal s6eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("S6")/numberOfQueriesPerQueryType.get("S6"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("S6") > 0)
-			finalModel.add(experiment, EVALUATION_S6E_AVERAGE_TIME, s6eAverageTimeLiteral);
-		Literal s7eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("S7")/numberOfQueriesPerQueryType.get("S7"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("S7") > 0)
-			finalModel.add(experiment, EVALUATION_S7E_AVERAGE_TIME, s7eAverageTimeLiteral);
-		Literal u1eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("U1")/numberOfQueriesPerQueryType.get("U1"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("U1") > 0)
-			finalModel.add(experiment, EVALUATION_U1E_AVERAGE_TIME, u1eAverageTimeLiteral);
-		Literal u2eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("U2")/numberOfQueriesPerQueryType.get("U2"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("U2") > 0)
-			finalModel.add(experiment, EVALUATION_U2E_AVERAGE_TIME, u2eAverageTimeLiteral);
-		Literal u3eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("U3")/numberOfQueriesPerQueryType.get("U3"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("U3") > 0)
-			finalModel.add(experiment, EVALUATION_U3E_AVERAGE_TIME, u3eAverageTimeLiteral);
-		Literal u4eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("U4")/numberOfQueriesPerQueryType.get("U4"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("U4") > 0)
-			finalModel.add(experiment, EVALUATION_U4E_AVERAGE_TIME, u4eAverageTimeLiteral);
-		Literal u5eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("U5")/numberOfQueriesPerQueryType.get("U5"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("U5") > 0)
-			finalModel.add(experiment, EVALUATION_U5E_AVERAGE_TIME, u5eAverageTimeLiteral);
-		Literal u6eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("U6")/numberOfQueriesPerQueryType.get("U6"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("U6") > 0)
-			finalModel.add(experiment, EVALUATION_U6E_AVERAGE_TIME, u6eAverageTimeLiteral);
-		Literal u7eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("U7")/numberOfQueriesPerQueryType.get("U7"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("U7") > 0)
-			finalModel.add(experiment, EVALUATION_U7E_AVERAGE_TIME, u7eAverageTimeLiteral);
-		Literal u8eAverageTimeLiteral = finalModel.createTypedLiteral(
-				(double)totalTimePerQueryType.get("U8")/numberOfQueriesPerQueryType.get("U8"), XSDDatatype.XSDdouble);
-		if (numberOfQueriesPerQueryType.get("U8") > 0)
-			finalModel.add(experiment, EVALUATION_U8E_AVERAGE_TIME, u8eAverageTimeLiteral);
 		
 		Literal loadingTimeLiteral = finalModel.createTypedLiteral(loading_time, XSDDatatype.XSDlong);
 		finalModel.add(experiment, EVALUATION_LOADING_TIME, loadingTimeLiteral);
