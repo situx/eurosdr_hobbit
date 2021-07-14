@@ -16,14 +16,14 @@ import org.apache.jena.vocabulary.RDF;
 import org.hobbit.core.Constants;
 import org.hobbit.core.components.AbstractEvaluationModule;
 import org.hobbit.core.rabbit.RabbitMQUtils;
-import org.hobbit.gspb.util.SNBConstants;
+import org.hobbit.gspb.util.GSPBConstants;
 import org.hobbit.vocab.HOBBIT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SNBEvaluationModule extends AbstractEvaluationModule {
+public class GSPBEvaluationModule extends AbstractEvaluationModule {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(SNBEvaluationModule.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(GSPBEvaluationModule.class);
 	
 	/* Final evaluation model */
 	private Model finalModel = ModelFactory.createDefaultModel();
@@ -111,91 +111,109 @@ public class SNBEvaluationModule extends AbstractEvaluationModule {
 		Map<String, String> env = System.getenv();
 		
         /* average query time */
-        if (!env.containsKey(SNBConstants.EVALUATION_QE_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_QE_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_QE_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_QE_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        EVALUATION_QE_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_QE_AVERAGE_TIME));
+        EVALUATION_QE_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_QE_AVERAGE_TIME));
         
         
         /* average query times per type */
-        if (!env.containsKey(SNBConstants.EVALUATION_Q19_1_1E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q19_1_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q19_1_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q19_1_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q02E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q02E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q19_2_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q19_2_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q03E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q03E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q19_3_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q19_3_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q04E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q04E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q19_4_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q19_4_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q05E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q05E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q19_5_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q19_5_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q06E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q06E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q19_6_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q19_6_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q07E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q07E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q19_7_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q19_7_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q08E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q08E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q19_8_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q19_8_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q09E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q09E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q19_9_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q19_9_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q10E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q10E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_1_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_1_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q11E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q11E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_1_2E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_1_2E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q12E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q12E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_3_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_3_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q13E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q13E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_3_2E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_3_2E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        if (!env.containsKey(SNBConstants.EVALUATION_Q14E_AVERAGE_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_Q14E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_3_3E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_3_3E_AVERAGE_TIME + "\" from the environment. Aborting.");
         }
-        EVALUATION_Q01E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q01E_AVERAGE_TIME));
-        EVALUATION_Q02E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q02E_AVERAGE_TIME));
-        EVALUATION_Q03E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q03E_AVERAGE_TIME));
-        EVALUATION_Q04E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q04E_AVERAGE_TIME));
-        EVALUATION_Q05E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q05E_AVERAGE_TIME));
-        EVALUATION_Q06E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q06E_AVERAGE_TIME));
-        EVALUATION_Q07E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q07E_AVERAGE_TIME));
-        EVALUATION_Q08E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q08E_AVERAGE_TIME));
-        EVALUATION_Q09E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q09E_AVERAGE_TIME));
-        EVALUATION_Q10E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q10E_AVERAGE_TIME));
-        EVALUATION_Q11E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q11E_AVERAGE_TIME));
-        EVALUATION_Q12E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q12E_AVERAGE_TIME));
-        EVALUATION_Q13E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q13E_AVERAGE_TIME));
-        EVALUATION_Q14E_AVERAGE_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_Q14E_AVERAGE_TIME));
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_3_4E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_3_4E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        }
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_3_5E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_3_5E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        }
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_4_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_4_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        }
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_5_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_5_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        }
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_6_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_6_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        }
+        if (!env.containsKey(GSPBConstants.EVALUATION_Q22_7_1E_AVERAGE_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_Q22_7_1E_AVERAGE_TIME + "\" from the environment. Aborting.");
+        }
+        EVALUATION_Q01E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q01E_AVERAGE_TIME));
+        EVALUATION_Q02E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q02E_AVERAGE_TIME));
+        EVALUATION_Q03E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q03E_AVERAGE_TIME));
+        EVALUATION_Q04E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q04E_AVERAGE_TIME));
+        EVALUATION_Q05E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q05E_AVERAGE_TIME));
+        EVALUATION_Q06E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q06E_AVERAGE_TIME));
+        EVALUATION_Q07E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q07E_AVERAGE_TIME));
+        EVALUATION_Q08E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q08E_AVERAGE_TIME));
+        EVALUATION_Q09E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q09E_AVERAGE_TIME));
+        EVALUATION_Q10E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q10E_AVERAGE_TIME));
+        EVALUATION_Q11E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q11E_AVERAGE_TIME));
+        EVALUATION_Q12E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q12E_AVERAGE_TIME));
+        EVALUATION_Q13E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q13E_AVERAGE_TIME));
+        EVALUATION_Q14E_AVERAGE_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_Q14E_AVERAGE_TIME));
         
         /* loading time */
-        if (!env.containsKey(SNBConstants.EVALUATION_LOADING_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_LOADING_TIME + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_LOADING_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_LOADING_TIME + "\" from the environment. Aborting.");
         }
-        EVALUATION_LOADING_TIME = finalModel.createProperty(env.get(SNBConstants.EVALUATION_LOADING_TIME));
-        if (!env.containsKey(SNBConstants.EVALUATION_REAL_LOADING_TIME)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_REAL_LOADING_TIME + "\" from the environment. Aborting.");
+        EVALUATION_LOADING_TIME = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_LOADING_TIME));
+        if (!env.containsKey(GSPBConstants.EVALUATION_REAL_LOADING_TIME)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_REAL_LOADING_TIME + "\" from the environment. Aborting.");
         }
-        loading_time = Long.parseLong(env.get(SNBConstants.EVALUATION_REAL_LOADING_TIME));
+        loading_time = Long.parseLong(env.get(GSPBConstants.EVALUATION_REAL_LOADING_TIME));
         
         /* throughput */
-        if (!env.containsKey(SNBConstants.EVALUATION_THROUGHPUT)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_THROUGHPUT + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_THROUGHPUT)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_THROUGHPUT + "\" from the environment. Aborting.");
         }
-        EVALUATION_THROUGHPUT = finalModel.createProperty(env.get(SNBConstants.EVALUATION_THROUGHPUT));
+        EVALUATION_THROUGHPUT = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_THROUGHPUT));
         
         /* number of wrong answers */
-        if (!env.containsKey(SNBConstants.EVALUATION_NUMBER_OF_WRONG_ANSWERS)) {
-            throw new IllegalArgumentException("Couldn't get \"" + SNBConstants.EVALUATION_NUMBER_OF_WRONG_ANSWERS + "\" from the environment. Aborting.");
+        if (!env.containsKey(GSPBConstants.EVALUATION_NUMBER_OF_WRONG_ANSWERS)) {
+            throw new IllegalArgumentException("Couldn't get \"" + GSPBConstants.EVALUATION_NUMBER_OF_WRONG_ANSWERS + "\" from the environment. Aborting.");
         }
-        EVALUATION_NUMBER_OF_WRONG_ANSWERS = finalModel.createProperty(env.get(SNBConstants.EVALUATION_NUMBER_OF_WRONG_ANSWERS));        
+        EVALUATION_NUMBER_OF_WRONG_ANSWERS = finalModel.createProperty(env.get(GSPBConstants.EVALUATION_NUMBER_OF_WRONG_ANSWERS));        
 	}
 
 	@Override

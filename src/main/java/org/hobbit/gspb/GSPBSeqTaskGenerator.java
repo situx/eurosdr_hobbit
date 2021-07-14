@@ -11,17 +11,17 @@ import org.apache.jena.query.ResultSetFactory;
 import org.apache.jena.query.ResultSetFormatter;
 import org.hobbit.core.components.AbstractSequencingTaskGenerator;
 import org.hobbit.core.rabbit.RabbitMQUtils;
-import org.hobbit.gspb.util.SNBConstants;
+import org.hobbit.gspb.util.GSPBConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SNBSeqTaskGenerator extends AbstractSequencingTaskGenerator {
+public class GSPBSeqTaskGenerator extends AbstractSequencingTaskGenerator {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(SNBSeqTaskGenerator.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(GSPBSeqTaskGenerator.class);
     
     String [] answers;
 	
-    public SNBSeqTaskGenerator() {
+    public GSPBSeqTaskGenerator() {
     	super();
 	}
     
@@ -36,18 +36,18 @@ public class SNBSeqTaskGenerator extends AbstractSequencingTaskGenerator {
 
     
     private void internalInit() {
-        answers = new String[SNBConstants.SNB_ANSWERS.length];       
+        answers = new String[GSPBConstants.GSPB_ANSWERS.length];       
     	// reading query answers
         try {
-            for (int i=0; i < SNBConstants.SNB_ANSWERS.length; i++) {
-                InputStream inputStream = new FileInputStream("gsb_answers/" + SNBConstants.SNB_ANSWERS[i]);
+            for (int i=0; i < GSPBConstants.GSPB_ANSWERS.length; i++) {
+                InputStream inputStream = new FileInputStream("gsb_answers/" + GSPBConstants.GSPB_ANSWERS[i]);
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 ResultSetFactory rsf = new ResultSetFactory();                
                 ResultSetFormatter.outputAsJSON(outputStream, rsf.fromXML(inputStream));
                 answers[i] = outputStream.toString();
                 inputStream.close();
                 for (int k=1; ; k++) {
-                    String alternativeAnswerFileName = SNBConstants.SNB_ANSWERS[i].replace(".srx","") + "-alternative-" + k + ".srx";
+                    String alternativeAnswerFileName = GSPBConstants.GSPB_ANSWERS[i].replace(".srx","") + "-alternative-" + k + ".srx";
                     LOGGER.info("Looking for an alternative file called: " + alternativeAnswerFileName);
                     File alternativeAnswerFile = new File("gsb_answers/" + alternativeAnswerFileName);
                     if (!alternativeAnswerFile.exists()) break;

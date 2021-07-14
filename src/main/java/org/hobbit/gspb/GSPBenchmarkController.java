@@ -9,14 +9,14 @@ import org.apache.jena.rdf.model.NodeIterator;
 import org.hobbit.core.Commands;
 import org.hobbit.core.Constants;
 import org.hobbit.core.components.AbstractBenchmarkController;
-import org.hobbit.gspb.util.SNBConstants;
+import org.hobbit.gspb.util.GSPBConstants;
 import org.hobbit.gspb.util.VirtuosoSystemAdapterConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SNBBenchmarkController extends AbstractBenchmarkController {
+public class GSPBenchmarkController extends AbstractBenchmarkController {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(SNBBenchmarkController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(GSPBenchmarkController.class);
 	private ArrayList<String> envVariablesEvaluationModule = new ArrayList<String>();;
 	private int numberOfOperations = -1;
 	private int scaleFactor = -1;
@@ -37,7 +37,7 @@ public class SNBBenchmarkController extends AbstractBenchmarkController {
 	/* Evaluation module Docker image */
 	protected static final String EVALUATION_MODULE_CONTAINER_IMAGE = "git.project-hobbit.eu:4567/mspasic/dsb-evaluationmodule";
 
-	public SNBBenchmarkController() {
+	public GSPBenchmarkController() {
 
 	}
 
@@ -179,20 +179,20 @@ public class SNBBenchmarkController extends AbstractBenchmarkController {
 		// Create data generators
 		int numberOfDataGenerators = 1;
 		String[] envVariables = new String[]{
-				SNBConstants.GENERATOR_SCALE_FACTOR + "=" + scaleFactor,
-				SNBConstants.GENERATOR_NUMBER_OF_OPERATIONS + "=" + numberOfOperations
+				GSPBConstants.GENERATOR_SCALE_FACTOR + "=" + scaleFactor,
+				GSPBConstants.GENERATOR_NUMBER_OF_OPERATIONS + "=" + numberOfOperations
 		};
 		createDataGenerators(DATA_GENERATOR_CONTAINER_IMAGE, numberOfDataGenerators, envVariables);
 
 		// Create task generators
 		int numberOfTaskGenerators = 1;
 		envVariables = new String[] {
-				SNBConstants.GENERATOR_SCALE_FACTOR + "=" + scaleFactor,
-				SNBConstants.GENERATOR_SEED + "=" + seed,
-				SNBConstants.GENERATOR_NUMBER_OF_OPERATIONS + "=" + numberOfOperations,
-				SNBConstants.WARMUP_COUNT + "=" + warmupCount,
-				SNBConstants.GENERATOR_INITIAL_TIME_COMPRESSION_RATIO + "=" + timeCompressionRatio,
-				SNBConstants.DISABLE_ENABLE_QUERY_TYPE + "=" + disableEnableQueryType
+				GSPBConstants.GENERATOR_SCALE_FACTOR + "=" + scaleFactor,
+				GSPBConstants.GENERATOR_SEED + "=" + seed,
+				GSPBConstants.GENERATOR_NUMBER_OF_OPERATIONS + "=" + numberOfOperations,
+				GSPBConstants.WARMUP_COUNT + "=" + warmupCount,
+				GSPBConstants.GENERATOR_INITIAL_TIME_COMPRESSION_RATIO + "=" + timeCompressionRatio,
+				GSPBConstants.DISABLE_ENABLE_QUERY_TYPE + "=" + disableEnableQueryType
 		};
 		if (sequential_tasks == false)
 			createTaskGenerators(TASK_GENERATOR_CONTAINER_IMAGE, numberOfTaskGenerators, envVariables);
@@ -207,24 +207,24 @@ public class SNBBenchmarkController extends AbstractBenchmarkController {
 		createEvaluationStorage(DEFAULT_EVAL_STORAGE_IMAGE, envVariables);
 		
 		// KPIs for evaluation module
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_QE_AVERAGE_TIME + "=" + "http://w3id.org/bench#QEAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q01E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q01EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q02E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q02EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q03E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q03EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q04E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q04EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q05E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q05EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q06E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q06EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q07E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q07EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q08E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q08EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q09E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q09EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q10E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q10EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q11E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q11EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q12E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q12EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q13E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q13EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_Q14E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q14EAverageTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_LOADING_TIME + "=" + "http://w3id.org/bench#loadingTime");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_THROUGHPUT + "=" + "http://w3id.org/bench#throughput");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_NUMBER_OF_WRONG_ANSWERS + "=" + "http://w3id.org/bench#numberOfWrongAnswers");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_QE_AVERAGE_TIME + "=" + "http://w3id.org/bench#QEAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q01E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q01EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q02E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q02EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q03E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q03EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q04E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q04EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q05E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q05EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q06E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q06EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q07E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q07EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q08E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q08EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q09E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q09EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q10E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q10EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q11E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q11EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q12E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q12EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q13E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q13EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_Q14E_AVERAGE_TIME + "=" + "http://w3id.org/bench#Q14EAverageTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_LOADING_TIME + "=" + "http://w3id.org/bench#loadingTime");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_THROUGHPUT + "=" + "http://w3id.org/bench#throughput");
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_NUMBER_OF_WRONG_ANSWERS + "=" + "http://w3id.org/bench#numberOfWrongAnswers");
 
 		// Wait for all components to finish their initialization
 		waitForComponentsToInitialize();
@@ -249,7 +249,7 @@ public class SNBBenchmarkController extends AbstractBenchmarkController {
 		waitForSystemToFinish();
 
 		LOGGER.info("Evaluation in progress...");
-		envVariablesEvaluationModule.add(SNBConstants.EVALUATION_REAL_LOADING_TIME + "=" + (loadingEnded - loadingStarted));
+		envVariablesEvaluationModule.add(GSPBConstants.EVALUATION_REAL_LOADING_TIME + "=" + (loadingEnded - loadingStarted));
 		createEvaluationModule(EVALUATION_MODULE_CONTAINER_IMAGE, envVariablesEvaluationModule.toArray(new String[0]));
 
 		// wait for the evaluation to finish

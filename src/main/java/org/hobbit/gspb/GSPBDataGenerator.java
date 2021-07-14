@@ -11,18 +11,18 @@ import java.util.concurrent.Semaphore;
 import org.apache.commons.io.IOUtils;
 import org.hobbit.core.components.AbstractDataGenerator;
 import org.hobbit.core.rabbit.RabbitMQUtils;
-import org.hobbit.gspb.util.SNBConstants;
+import org.hobbit.gspb.util.GSPBConstants;
 import org.hobbit.gspb.util.VirtuosoSystemAdapterConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class SNBDataGenerator extends AbstractDataGenerator {
+public class GSPBDataGenerator extends AbstractDataGenerator {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(SNBDataGenerator.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(GSPBDataGenerator.class);
 	private Semaphore generateTasks = new Semaphore(0);
 	private int numberOfOperations;
 	
-    public SNBDataGenerator() {
+    public GSPBDataGenerator() {
     	
     }
     
@@ -41,11 +41,11 @@ public class SNBDataGenerator extends AbstractDataGenerator {
     	Map<String, String> env = System.getenv();
     	    	
     	// Number of operations
-    	if (!env.containsKey(SNBConstants.GENERATOR_NUMBER_OF_OPERATIONS)) {
-            LOGGER.error("Couldn't get \"" + SNBConstants.GENERATOR_NUMBER_OF_OPERATIONS + "\" from the properties. Aborting.");
+    	if (!env.containsKey(GSPBConstants.GENERATOR_NUMBER_OF_OPERATIONS)) {
+            LOGGER.error("Couldn't get \"" + GSPBConstants.GENERATOR_NUMBER_OF_OPERATIONS + "\" from the properties. Aborting.");
             System.exit(1);
         }
-    	numberOfOperations = Integer.parseInt(env.get(SNBConstants.GENERATOR_NUMBER_OF_OPERATIONS));
+    	numberOfOperations = Integer.parseInt(env.get(GSPBConstants.GENERATOR_NUMBER_OF_OPERATIONS));
 	}
 
 	@Override
@@ -104,8 +104,8 @@ public class SNBDataGenerator extends AbstractDataGenerator {
         if (command == VirtuosoSystemAdapterConstants.BULK_LOADING_DATA_FINISHED) {
             LOGGER.info("Getting queries");
             try {            
-                for (int i=0; i < SNBConstants.SNB_QUERIES.length; i++) {
-                    InputStream inputStream = new FileInputStream("gsb_queries/" + SNBConstants.SNB_QUERIES[i]);
+                for (int i=0; i < GSPBConstants.GSPB_QUERIES.length; i++) {
+                    InputStream inputStream = new FileInputStream("gsb_queries/" + GSPBConstants.GSPB_QUERIES[i]);
                     String fileContent = IOUtils.toString(inputStream);
                     fileContent = "#Q-" + (i+1) + "\n" + fileContent; // add a comment line at the beginning of the query, to denote the query number (#Q-1, #Q-2, ...)
                     byte[] bytesArray = null;
